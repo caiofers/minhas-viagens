@@ -1,19 +1,18 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  Minhas Viagens
 //
 //  Created by Caio Fernandes on 26/03/21.
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+
     }
-
-
 }
-

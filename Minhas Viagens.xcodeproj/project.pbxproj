@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		DF9488A2260EABDD0029686D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9488A1260EABDD0029686D /* AppDelegate.swift */; };
 		DF9488A4260EABDD0029686D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9488A3260EABDD0029686D /* SceneDelegate.swift */; };
-		DF9488A6260EABDD0029686D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9488A5260EABDD0029686D /* ViewController.swift */; };
+		DF9488A6260EABDD0029686D /* MinhasViagensTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9488A5260EABDD0029686D /* MinhasViagensTableViewController.swift */; };
 		DF9488A9260EABDD0029686D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9488A7260EABDD0029686D /* Main.storyboard */; };
 		DF9488AB260EABDF0029686D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF9488AA260EABDF0029686D /* Assets.xcassets */; };
 		DF9488AE260EABDF0029686D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9488AC260EABDF0029686D /* LaunchScreen.storyboard */; };
+		DF9488B7260EB97A0029686D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9488B6260EB97A0029686D /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DF94889E260EABDD0029686D /* Minhas Viagens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Minhas Viagens.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF9488A1260EABDD0029686D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF9488A3260EABDD0029686D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DF9488A5260EABDD0029686D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DF9488A5260EABDD0029686D /* MinhasViagensTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinhasViagensTableViewController.swift; sourceTree = "<group>"; };
 		DF9488A8260EABDD0029686D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DF9488AA260EABDF0029686D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF9488AD260EABDF0029686D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF9488AF260EABDF0029686D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF9488B6260EB97A0029686D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +60,11 @@
 			children = (
 				DF9488A1260EABDD0029686D /* AppDelegate.swift */,
 				DF9488A3260EABDD0029686D /* SceneDelegate.swift */,
-				DF9488A5260EABDD0029686D /* ViewController.swift */,
+				DF9488A5260EABDD0029686D /* MinhasViagensTableViewController.swift */,
 				DF9488A7260EABDD0029686D /* Main.storyboard */,
 				DF9488AA260EABDF0029686D /* Assets.xcassets */,
 				DF9488AC260EABDF0029686D /* LaunchScreen.storyboard */,
+				DF9488B6260EB97A0029686D /* MapViewController.swift */,
 				DF9488AF260EABDF0029686D /* Info.plist */,
 			);
 			path = "Minhas Viagens";
@@ -137,9 +140,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF9488A6260EABDD0029686D /* ViewController.swift in Sources */,
+				DF9488A6260EABDD0029686D /* MinhasViagensTableViewController.swift in Sources */,
 				DF9488A2260EABDD0029686D /* AppDelegate.swift in Sources */,
 				DF9488A4260EABDD0029686D /* SceneDelegate.swift in Sources */,
+				DF9488B7260EB97A0029686D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
