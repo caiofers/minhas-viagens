@@ -86,6 +86,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     annotation.coordinate.longitude = coordinate.longitude
                     annotation.title = adress
                     self.map.addAnnotation(annotation)
+                    let place: Dictionary<String, String> = ["local": adress, "latitude": String(latitude), "longitude": String(longitude)]
+                    self.listOfObj.add(place: place)
                 }
             } else {
                 print("ERROR")

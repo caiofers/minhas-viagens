@@ -9,7 +9,8 @@ import UIKit
 
 class MinhasViagensTableViewController: UITableViewController {
     
-    var listOfPlaces: [String] = []
+    var listOfPlaces: [Dictionary <String, String>] = []
+    
     private var listObj = Places()
     
     override func viewDidLoad() {
@@ -33,8 +34,8 @@ class MinhasViagensTableViewController: UITableViewController {
         
         let reuseCell = "reuseCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseCell, for: indexPath)
-        
-        cell.textLabel?.text = listOfPlaces[indexPath.row]
+        let place = listOfPlaces[indexPath.row]
+        cell.textLabel?.text = place["local"]
         
         return cell
     }
