@@ -13,10 +13,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var map: MKMapView!
     private var listOfObj = Places()
     private var locationManager = CLLocationManager()
-    
+    var place: Dictionary<String, String> = [:]
+    var isPlaceView: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLocationManager()
+        
+        if !isPlaceView {
+            setupLocationManager()
+        } else {
+            seePlace()
+        }
         
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.mark(gesture:)))
         gestureRecognizer.minimumPressDuration = 2
@@ -36,6 +42,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+    }
+    
+    func seePlace() -> Void {
+        let latitude = Double(place["latitude"]!)
+        let longitude = Double(place["longitude"]!)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate.latitude = latitude!
+        annotation.coordinate.longitude = longitude!
+        annotation.title = place["local"]
+        map.addAnnotation(annotation)
+        seeLocal(latitude: latitude!, longitude: longitude!)
+    }
+    
+    func seeLocal(latitude: Double, longitude: Double) -> Void {
+        let deltaLatitude: CLLocationDegrees = 0.05
+        let deltaLongitude: CLLocationDegrees = 0.05
+        let location2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let visualizationArea: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: deltaLatitude, longitudeDelta: deltaLongitude)
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: location2D, span: visualizationArea)
+        map.setRegion(region, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocalization = locations.last
+        let longitude = userLocalization?.coordinate.longitude
+        let latitude = userLocalization?.coordinate.latitude
+        seeLocal(latitude: latitude!, longitude: longitude!)
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

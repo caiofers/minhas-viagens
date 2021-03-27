@@ -10,7 +10,7 @@ import UIKit
 class MinhasViagensTableViewController: UITableViewController {
     
     var listOfPlaces: [Dictionary <String, String>] = []
-    
+    var navigation = "add"
     private var listObj = Places()
     
     override func viewDidLoad() {
@@ -18,6 +18,7 @@ class MinhasViagensTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        navigation = "add"
         listOfPlaces = listObj.getAllPlaces()
         tableView.reloadData()
     }
@@ -45,6 +46,26 @@ class MinhasViagensTableViewController: UITableViewController {
             listObj.remove(at: indexPath.row)
             listOfPlaces = listObj.getAllPlaces()
             tableView.reloadData()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigation = "list"
+        performSegue(withIdentifier: "seeMap", sender: indexPath.row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "seeMap" {
+            let viewDestiny = segue.destination as! MapViewController
+            if navigation == "list" {
+                if let indexForItem = sender {
+                    viewDestiny.place = listOfPlaces[indexForItem as! Int]
+                    viewDestiny.isPlaceView = true
+                }
+            } else {
+                viewDestiny.place = [:]
+                viewDestiny.isPlaceView = false
+            }
         }
     }
     
