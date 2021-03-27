@@ -27,10 +27,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if gesture?.state == UIGestureRecognizer.State.began{
             let pointSelected = (gesture?.location(in: self.map))!
             let coordinate = map.convert(pointSelected, toCoordinateFrom: self.map)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate.latitude = coordinate.latitude
-            annotation.coordinate.longitude = coordinate.longitude
-            map.addAnnotation(annotation)
+            saveAdress(coordinate: coordinate)
         }
     }
     
@@ -65,84 +62,34 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         present(alertDenied, animated: true, completion: nil)
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocalization = locations.last
-        let longitude = userLocalization?.coordinate.longitude
-        let latitude = userLocalization?.coordinate.latitude
+    func saveAdress(coordinate: CLLocationCoordinate2D) {
+        let longitude = coordinate.longitude
+        let latitude = coordinate.latitude
         
-        let deltaLatitude: CLLocationDegrees = 0.01
-        let deltaLongitude: CLLocationDegrees = 0.01
+        let location = CLLocation(latitude: latitude, longitude: longitude)
         
-        let location2D = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
-        let location = CLLocation(latitude: latitude!, longitude: longitude!)
-        
-        let visualizationArea: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: deltaLatitude, longitudeDelta: deltaLongitude)
-        
-        let region: MKCoordinateRegion = MKCoordinateRegion(center: location2D, span: visualizationArea)
+        var adress = "Adress not found!"
         
         CLGeocoder().reverseGeocodeLocation(location, preferredLocale: nil) { (localDetails, error) in
             if error == nil {
                 if let local = localDetails?.first {
-                    // Rua
-                    var thoroughfare = ""
-                    if local.thoroughfare != nil {
-                        thoroughfare = local.thoroughfare!
-                    }
                     
-                    // Número
-                    var subThoroughfare = ""
-                    if local.subThoroughfare != nil {
-                        subThoroughfare = local.subThoroughfare!
+                    if let name = local.name{
+                        adress = name
+                    } else {
+                        if let thoroughfare =  local.thoroughfare {
+                            adress = thoroughfare
+                        }
                     }
-                    
-                    // Estado
-                    var locality = ""
-                    if local.locality != nil {
-                        locality = local.locality!
-                    }
-                    
-                    // Cidade
-                    var subLocality = ""
-                    if local.subLocality != nil {
-                        subLocality = local.subLocality!
-                    }
-                    
-                    // CEP
-                    var postalCode = ""
-                    if local.postalCode != nil {
-                        postalCode = local.postalCode!
-                    }
-                    
-                    // País
-                    var country = ""
-                    if local.country != nil {
-                        country = local.country!
-                    }
-                    
-                    // Sigla Estado
-                    var administrativeArea = ""
-                    if local.postalCode != nil {
-                        administrativeArea = local.administrativeArea!
-                    }
-                    
-                    var subAdministrativeArea = ""
-                    if local.subAdministrativeArea != nil {
-                        subAdministrativeArea = local.subAdministrativeArea!
-                    }
-                    
-                    let place = (thoroughfare == "" ? "" : thoroughfare + ", ") +
-                                            (subThoroughfare == "" ? "" : subThoroughfare + ", ") +
-                                            (subLocality == "" ? "" : subLocality + "-") +
-                                            (administrativeArea == "" ? "" : administrativeArea + ", ") +
-                                            (country == "" ? "" : country) +
-                                            (postalCode == "" ? "" : ", Zip Code: " + postalCode)
-                    self.listOfObj.add(place: place)
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate.latitude = coordinate.latitude
+                    annotation.coordinate.longitude = coordinate.longitude
+                    annotation.title = adress
+                    self.map.addAnnotation(annotation)
                 }
             } else {
-                // TODO: Error
-                print ("ERROR")
+                print("ERROR")
             }
         }
-        
     }
 }
