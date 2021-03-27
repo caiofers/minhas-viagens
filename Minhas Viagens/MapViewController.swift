@@ -17,6 +17,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocationManager()
+        
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.mark(gesture:)))
+        gestureRecognizer.minimumPressDuration = 2
+        map.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc func mark(gesture: UIGestureRecognizer? = nil){
+        if gesture?.state == UIGestureRecognizer.State.began{
+            let pointSelected = (gesture?.location(in: self.map))!
+            let coordinate = map.convert(pointSelected, toCoordinateFrom: self.map)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate.latitude = coordinate.latitude
+            annotation.coordinate.longitude = coordinate.longitude
+            map.addAnnotation(annotation)
+        }
     }
     
     func setupLocationManager() -> Void {
