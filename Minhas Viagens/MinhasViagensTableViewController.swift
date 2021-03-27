@@ -10,9 +10,15 @@ import UIKit
 class MinhasViagensTableViewController: UITableViewController {
     
     var listOfPlaces: [String] = []
+    private var listObj = Places()
     
     override func viewDidLoad() {
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        listOfPlaces = listObj.getAllPlaces()
+        tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,6 +37,14 @@ class MinhasViagensTableViewController: UITableViewController {
         cell.textLabel?.text = listOfPlaces[indexPath.row]
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            listObj.remove(at: indexPath.row)
+            listOfPlaces = listObj.getAllPlaces()
+            tableView.reloadData()
+        }
     }
     
 }

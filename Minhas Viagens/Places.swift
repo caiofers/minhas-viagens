@@ -17,7 +17,7 @@ class Places{
         UserDefaults.standard.set(listOfPlaces, forKey: key)
     }
     
-    func remove(placeIndex: Int) -> Void {
+    func remove(at placeIndex: Int) -> Void {
         listOfPlaces = getAllPlaces()
         listOfPlaces.remove(at: placeIndex)
         UserDefaults.standard.set(listOfPlaces, forKey: key)
