@@ -15,6 +15,7 @@
 		DF9488AE260EABDF0029686D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9488AC260EABDF0029686D /* LaunchScreen.storyboard */; };
 		DF9488B7260EB97A0029686D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9488B6260EB97A0029686D /* MapViewController.swift */; };
 		DF9488BB260EBAD50029686D /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9488BA260EBAD50029686D /* Places.swift */; };
+		DF9488BF260EC29E0029686D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9488BE260EC29E0029686D /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		DF9488AF260EABDF0029686D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF9488B6260EB97A0029686D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DF9488BA260EBAD50029686D /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
+		DF9488BE260EC29E0029686D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF9488BF260EC29E0029686D /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +49,7 @@
 			children = (
 				DF9488A0260EABDD0029686D /* Minhas Viagens */,
 				DF94889F260EABDD0029686D /* Products */,
+				DF9488BD260EC29E0029686D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +75,14 @@
 				DF9488AF260EABDF0029686D /* Info.plist */,
 			);
 			path = "Minhas Viagens";
+			sourceTree = "<group>";
+		};
+		DF9488BD260EC29E0029686D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF9488BE260EC29E0029686D /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
