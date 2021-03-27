@@ -13,7 +13,7 @@ class MinhasViagensTableViewController: UITableViewController {
     private var listObj = Places()
     
     override func viewDidLoad() {
-        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
